@@ -1,0 +1,560 @@
+/* Reset CSS by Amaka Ndukwu */
+
+/* making use of :where to allow for low specificity making it easy to override */
+
+
+/* 1. border-box for box model */
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+     position: relative;
+}
+
+/* 2. remove default margin 
+padding is optional but i do this because of lists*/
+
+:where(:not(dialog)) {
+    margin: 0;
+    padding: 0;
+}
+
+
+/* 3. great for in-page linking */
+/* @media(prefers-reduced-motion:no-preference) { */
+    /* :where(html) { */
+        /* scroll-behavior: smooth; */
+    /* } */
+/* } */
+
+/* 4. line height and text rendering improvement */
+:where(html) {
+    line-height: 1.5;
+    -webkit-font-smoothing: antialiased;
+}
+
+/* 5. ensure full viewport height */
+:where(html, body) {
+    min-block-size: 100%;
+}
+
+/* 6. improve line wrapping */
+:where(h1, h2, h3,
+    h4, h5, h6) {
+    text-wrap: balance;
+}
+
+:where(p) {
+    text-wrap: pretty;
+}
+
+:where(figure)>:where(figcaption) {
+    text-wrap: balance;
+}
+
+:where(p, h1, h2, h3,
+    h4, h5, h6) {
+    overflow-wrap: break-word;
+}
+
+
+
+/* 7. making media elements block-level */
+:where(img,
+    svg,
+    video,
+    canvas,
+    picture,
+    audio,
+    iframe,
+    embed,
+    object) {
+    display: block
+}
+
+:where(img, svg, video, canvas, picture) {
+    block-size: auto;
+    max-inline-size: 100%
+}
+
+/* 8. inherit font and letter spacing for form controls */
+:where(input,
+    button,
+    textarea,
+    select),
+:where(input[type=file])::-webkit-file-upload-button {
+    font: inherit;
+    letter-spacing: inherit
+}
+
+/* 9. textarea can only resized vertically and will grow to adjust its content */
+:where(textarea) {
+    resize: vertical;
+   field-sizing: content;
+}
+
+/* 10. table */
+:where(table) {
+    width: fit-content;
+    border-collapse: collapse;
+}
+
+:where(pre) {
+    direction: ltr;
+    max-inline-size: max-content;
+    min-inline-size: 0;
+    white-space: pre;
+    writing-mode: lr
+}
+
+:where(a[href],
+    area,
+    button,
+    input:not([type=text],
+        [type=email],
+        [type=number],
+        [type=password],
+        [type=""],
+        [type=tel],
+        [type=url]),
+    label[for],
+    select,
+    summary,
+    [tabindex]:not([tabindex*="-"],
+        pre)) {
+    cursor: pointer
+}
+
+/*  this will disable additional non-standard gestures such as double-tap to zoom*/
+:where(a[href],
+    area,
+    button,
+    input,
+    label[for],
+    select,
+    summary,
+    textarea,
+    [tabindex]:not([tabindex*="-"])) {
+    touch-action: manipulation
+}
+
+/* .hero { */
+    /* display: flex; */
+    /* justify-content: space-between; */
+    /* align-items: center; */
+    /* padding-block: 5rem; */
+/* } */
+
+
+
+
+/* MY OWN CSS */
+
+:root {
+    /* This is declaration (variables) */
+    --purple: #2d2641;
+    --gray1: #837d88;
+    --white: white;
+    --black: #121212;
+    --grey2: #2c2830;
+    --waterblue: #96a9c6;
+
+}
+
+html {
+    font-family: 'Karla', sans-serif;
+    font-size: 16px;
+    
+}
+
+:where(h1, h2, h3, h4, h5, h6) {
+    font-family: DM Serif Display, serif;
+    
+}
+
+
+/* This is for header ubder nav class link */
+
+a {
+    text-decoration: none;
+    text-transform: uppercase;
+    font-size: 13px;
+    letter-spacing: 1.5px;
+    line-height: 115%; 
+    font-weight: 700;  
+}
+
+/* header paddings */
+
+header, section {
+    padding-inline: 10vw;
+}
+
+header {
+    display: flex;
+    justify-content: space-between;
+    background-color: var(--white);
+    align-items: center;
+    padding-block: 2rem;
+    /* padding-top:20px; */
+    /* padding-bottom:20px; */
+}
+
+/* hovers on buttons for color */
+nav a {
+    color: var(--gray1);
+    
+    &:hover {
+        color: var(--black);
+        }
+
+    }
+
+.links a { 
+    color: var(--gray1); 
+    font-size: 14px;
+    font-weight: 600;
+    margin-inline: 1rem; 
+}
+
+.link_btn {
+    border: 1px solid var(--black);
+    color: var(--white);
+    padding: 0.5rem 1rem;
+    border-radius: 10px;
+    &:hover {
+           background-color: var(--black);
+           color: var(--white);
+        }
+}
+
+.hero{
+    display: flex;
+    background-image: url(Image/Right\ Background\ Shapes.svg), linear-gradient(to bottom, var(--purple)80%, var(--white)20%);
+    background-repeat: no-repeat no-repeat;
+    background-position: top right;
+    background-size: 27%, 100%, cover;
+    padding-top: 10vh;
+    column-gap: 32px;
+
+    > div {
+    flex-basis: 50%;
+    flex-grow: 0;
+}
+}
+
+
+.hero-left-hand {
+    color: var(--white);
+
+    p {
+        margin-bottom: 20px;
+    }
+} 
+
+h1 {
+        font-size: 3rem;
+        line-height: 90%;
+        letter-spacing: -1px;
+        margin-top: 60px;
+        margin-bottom: 20px;
+    }
+
+.white_btn {
+    color: var(--white);
+ 
+    &:hover {
+           background-color: var(--white);
+           color: var(--black);
+        }
+   
+} 
+
+.left-hand-image {
+    position: absolute;
+    top: 28%;
+    left: 0;
+
+    img{
+        width: 50%;
+        
+    }
+    
+}
+
+h2 {
+    font-family: DM serif;
+    font-size: 72px;
+    line-height: 90%;
+    letter-spacing: -1px;
+    margin-top: 60px;
+    margin-bottom: 60px;
+    font-weight: 400;
+
+}
+
+
+.wrappers {
+    margin-top: 110px;
+
+}
+
+
+.icon-values {
+    display: flex;
+    flex-direction: center;
+    gap: 30px;
+    color: var(--gray1);   
+}
+
+.icon-wrapper{
+     width: 86px;
+     height: 86px;
+     border-radius: 55%;
+     display: flex;
+     justify-content: center;
+     align-items: center;
+     border: solid 2px var(--white);
+     margin-bottom: 20px;   
+}
+   
+
+h3 {
+    color: var(--black)  
+
+}
+
+p {
+    font-family: karla;
+    font-size: 1rem;
+    font-weight: 400;
+    letter-spacing: 0px;
+    line-height: 165%;
+    
+}
+    
+/* Third section */
+
+.third-section{
+    display: flex;
+    margin-top: 70px;
+    margin-left: 50px;
+    margin-right: 50px;
+    background-color: var(--purple);
+    align-items: center;
+    color: var(--white);
+
+    
+}
+
+.link_btn3 {
+    display: flex;
+    flex-direction: left;
+    align-items: center;
+    border: 1px solid var(--white);
+    color: var(--white);
+    padding: 0.5rem 1rem;
+    height: 40px;
+    border-radius: 10px;
+    
+    
+    
+    &:hover {
+           background-color: var(--white);
+           color: var(--black);
+        }
+    }
+
+
+.third-section{
+    background-image: url(Image/RIGHT\ BACKGROUND\ DOWN.svg), linear-gradient(to bottom, var(--purple)100%, var(--white)20%);
+    background-repeat: no-repeat no-repeat;
+    background-position: top right;
+    background-size: 27%, 100%;
+    padding-top: 15px;
+    column-gap: 32px;
+  
+
+    > div {
+    flex-basis: 60%;
+    flex-grow: 0;
+    
+    }
+}
+
+
+footer { 
+    margin: auto 1rem 1rem;
+    /* padding-inline: 10vw; */
+    padding: clamp(1.5rem, 5vw, 3.5rem);
+    border-radius: 28px;
+    overflow: hidden; 
+    background-image: url(Image/footer\ left\ background\ .svg), linear-gradient(to bottom, var(--white)100%, var(--white)20%);
+    background-repeat: no-repeat no-repeat;
+    margin-top: 100px; 
+    background-color: aliceblue;
+
+}
+
+.socials {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1.5rem;
+    justify-content: space-between;
+    align-items: center;
+        
+}
+
+ .social-link {
+    display: flex;
+    gap: 0.5rem;
+    max-width: ;
+ }
+
+
+
+.shortcut {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(130px, 1fr));
+    gap: 2rem;
+    margin: 3rem 0;
+    text-align: center;
+ }
+
+
+ h4 {
+    column-gap: var(--gray1);
+    font-weight: 500;
+    margin-bottom: 1rem;
+ }
+
+ ul{
+    list-style: none;
+    padding: 0;
+    display: grid;
+    gap: 0.7rem;
+ }
+
+ a {
+
+ }
+    
+   /* justify-content: space-between;
+    background-color: var(--white);
+    align-items: center;
+    padding-block: 2rem;
+    background-image: url(Image/footer\ left\ background\ .svg), linear-gradient(to bottom, var(--white)100%, var(--white)20%);
+    background-repeat: no-repeat no-repeat;
+    margin-top: 100px;
+    
+    
+    color: var(--gray1);
+    
+    nav a {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    
+    color: var(--purple);
+    
+    &:hover {
+        color: var(--black);
+        }
+
+    }
+
+
+    >span {
+        margin-left: 60px;
+        margin-right: 60px;
+    }
+    >nav {
+        display: flex;
+        
+    }
+   
+    > div {
+    flex-basis: 30%;
+    flex-grow: 0;
+    }
+}
+
+
+/*.SHORTCUTS {
+    display: flex;
+    flex-direction: column;
+    color: var(--black); 
+
+    margin-inline: 1rem;
+    align-items: center;
+    padding-block: 2rem;
+    margin-left: 100px;
+
+    &:hover {
+           background-color: var(--black);
+           color: var(--white);
+    }
+}
+
+
+.long-line {
+    height: 100px;
+    width: 1000px;
+}
+
+.options {
+    display: flex;
+     width: 86px;
+     height: 86px;
+     justify-content: space-between;
+     align-items: center;
+     border: solid 2px var(--white);
+     margin-bottom: 20px;   
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* THIS IS FOR MOBILE PHONES OF SMALLER SCREENS */
+
+@media screen and (max-width: 600px) {
+    .hero {
+        flex-direction: column-reverse;
+        padding: 0;
+        background-image: url(Image/Right\ Background\ Shapes.svg), linear-gradient(to bottom, var(--purple)100%, var(--white)0%);
+        background-size: 100%, 100%, cover;
+        background-position:center left ;
+    }
+
+    .hero-left-hand {
+        padding: 80px 20px 20px;
+        text-align: center;
+        /* margin-bottom: 20px; */
+
+        svg {
+            width: 100%;
+            display: none;
+        }
+    }
+
+ h1 {
+    margin-top: 0%;
+ }
+
+    .left-hand-image {
+        position: static;
+        margin-top: 20px;
+
+        img {
+            width: 80%;
+        }
+    }
